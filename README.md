@@ -1,0 +1,1 @@
+# paper_delia_2024_ral_physics-informed_trajectory_generation
