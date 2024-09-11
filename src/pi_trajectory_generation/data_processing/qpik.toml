@@ -1,0 +1,126 @@
+tasks = [
+    "BASE_TASK",
+    "T8_TASK",
+    "HEAD_TASK",
+    "RIGHTUPPERLEG_TASK",
+    "RIGHTLOWERLEG_TASK",
+    "RIGHTFOOT_TASK",
+    "RIGHTUPPERARM_TASK",
+    "RIGHTFOREARM_TASK",
+    "LEFTUPPERLEG_TASK",
+    "LEFTLOWERLEG_TASK",
+    "LEFTFOOT_TASK",
+    "LEFTUPPERARM_TASK",
+    "LEFTFOREARM_TASK"
+]
+
+[IK]
+verbosity = false
+robot_velocity_variable_name = "robot_velocity"
+
+[BASE_TASK]
+type = "SE3Task"
+priority = 0 #to make it a constraint
+# priority = 1
+frame_name = "data_Pelvis"
+kp_linear = 20.0
+kp_angular = 20.0
+weight_provider_type = "ConstantWeightProvider"
+mask = [true, true, true]
+weight = [1.0, 1.0, 1.0]
+
+[T8_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_T8"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[HEAD_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_Head"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[RIGHTUPPERLEG_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_RightUpperLeg"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[RIGHTLOWERLEG_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_RightLowerLeg"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[RIGHTFOOT_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_RightFoot"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[RIGHTUPPERARM_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_RightUpperArm"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[RIGHTFOREARM_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_RightForeArm"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[LEFTUPPERLEG_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_LeftUpperLeg"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[LEFTLOWERLEG_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_LeftLowerLeg"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[LEFTFOOT_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_LeftFoot"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[LEFTUPPERARM_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_LeftUpperArm"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]
+
+[LEFTFOREARM_TASK]
+type = "SO3Task"
+priority = 1
+frame_name = "data_LeftForeArm"
+kp_angular = 10.0
+weight_provider_type = "ConstantWeightProvider"
+weight = [1.0, 1.0, 1.0]

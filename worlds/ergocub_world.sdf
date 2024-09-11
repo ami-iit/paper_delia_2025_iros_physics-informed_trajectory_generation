@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>0.3</real_time_factor>
+      <real_time_update_rate>300</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <shadows>false</shadows>
+    </scene>
+
+    <!-- Light -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+     <model name="iCub">
+      <plugin name='torso_configuration_override' filename='libgazebo_yarp_configurationoverride.so'>
+        <yarpPluginConfigurationOverride plugin_name='controlboard_torso'> </yarpPluginConfigurationOverride>
+        <initialConfiguration>-0.000031 0.159903 0.013094</initialConfiguration>
+      </plugin>
+      <plugin name='larm_configuration_override' filename='libgazebo_yarp_configurationoverride.so'>
+        <yarpPluginConfigurationOverride plugin_name='controlboard_left_arm_no_hand'> </yarpPluginConfigurationOverride>
+        <initialConfiguration>-0.074889 0.568453 -0.216553 0.026955  0.000001 -0.068488 -0.000002</initialConfiguration> <!-- shoulder roll is not 0.168453 just for visualization -->
+      </plugin>
+      <plugin name='rarm_configuration_override' filename='libgazebo_yarp_configurationoverride.so'>
+        <yarpPluginConfigurationOverride plugin_name='controlboard_right_arm_no_hand'> </yarpPluginConfigurationOverride>
+        <initialConfiguration>-0.062009 0.573437 -0.217069 0.028021  0.000001 -0.068488 -0.000001</initialConfiguration> <!-- shoulder roll is not 0.173437 just for visualization -->
+      </plugin>
+      <plugin name='lleg_configuration_override' filename='libgazebo_yarp_configurationoverride.so'>
+        <yarpPluginConfigurationOverride plugin_name='controlboard_left_leg'> </yarpPluginConfigurationOverride>
+        <initialConfiguration>-0.125344  0.043948  0.064749 -0.081615 -0.10727  -0.046901</initialConfiguration>
+      </plugin>
+      <plugin name='rleg_configuration_override' filename='libgazebo_yarp_configurationoverride.so'>
+        <yarpPluginConfigurationOverride plugin_name='controlboard_right_leg'> </yarpPluginConfigurationOverride>
+        <initialConfiguration>-0.114068  0.047179  0.057997 -0.085002 -0.0999   -0.047064</initialConfiguration>
+      </plugin>
+
+      <include>
+        <uri>model://ergoCubGazeboV1</uri>
+        <pose>0.05 -0.11 0.78 0.0 0.0 0.0</pose>
+      </include>
+    </model>
+  </world>
+</sdf>
+
