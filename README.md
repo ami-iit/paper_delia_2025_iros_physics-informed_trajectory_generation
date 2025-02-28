@@ -1,5 +1,5 @@
 <h1 align="center">
-Trajectory Generation with Physics-Informed Learning and Drift Mitigation
+Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning and Control-Informed Steering
 </h1>
 
 <div align="center">
@@ -9,14 +9,16 @@ Evelyn D'Elia, Paolo Maria Viceconte, Lorenzo Rapetti, Diego Ferigo, Giulio Romu
 <br>
 
 
+https://github.com/user-attachments/assets/00144d6f-c059-47f7-9e19-f2533a9a40a1
+
+
 <div align="center">
-    Submitted to IEEE Robotics and Automation Letters (RA-L).
+    Submitted to the 2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).
 </div>
 
 <div align="center">
-    <a href="#installation"> <b> Installation </b> | </a> <a href="https://huggingface.co/datasets/evelyd/paper_delia_2024_ral_physics-informed_trajectory_generation_dataset"> <b> Paper </b>  | </a> <a href="https://huggingface.co/datasets/evelyd/paper_delia_2024_ral_physics-informed_trajectory_generation_dataset"> <b> Dataset </b>  | </a> <a href="https://huggingface.co/datasets/evelyd/paper_delia_2024_ral_physics-informed_trajectory_generation_dataset"> <b> Video </b>  </a>
+    <a href="#installation"> <b> Installation </b> | </a> <a href="https://github.com/ami-iit/paper_delia_2025_iros_physics-informed_trajectory_generation/tree/main"> <b> Paper </b>  | </a> <a href="https://huggingface.co/datasets/evelyd/paper_delia_2025_iros_physics-informed_trajectory_generation_dataset"> <b> Dataset </b> </a>
 </div>
-
 
 ## Installation
 
@@ -24,20 +26,21 @@ We recommend using conda/mamba, available [here](https://github.com/conda-forge/
 
 First, create and activate a conda environment with the necessary dependencies.
 ```bash
-mamba create -n pi_trajectory_gen -c conda-forge bipedal-locomotion-framework jaxsim pytorch tensorboard adam-robotics urdf-parser-py h5py
+mamba create -n pi_trajectory_gen -c conda-forge bipedal-locomotion-framework jaxsim pytorch tensorboard adam-robotics jax2torch urdf-parser-py h5py
 mamba activate pi_trajectory_gen
 ```
+<!-- idyntree manifpy mujoco -->
 
 Next, within the conda environment, clone and install this repo:
 ```bash
-git clone https://github.com/ami-iit/paper_delia_2024_ral_physics-informed_trajectory_generation.git
-cd paper_delia_2024_ral_physics-informed_trajectory_generation
+git clone https://github.com/ami-iit/paper_delia_2025_iros_physics-informed_trajectory_generation.git
+cd paper_delia_2025_iros_physics-informed_trajectory_generation
 pip install .
 ```
 
 You will also need to download the datasets necessary for running the code into this repo. This may take some time depending on your internet connection.
 ```bash
-git clone git@hf.co:datasets/evelyd/paper_delia_2024_ral_physics-informed_trajectory_generation_dataset datasets/
+git clone git@hf.co:datasets/evelyd/paper_delia_2025_iros_physics-informed_trajectory_generation_dataset datasets/
 cd datasets/
 unzip D2.zip
 ```
@@ -54,7 +57,7 @@ cd scripts/
 The raw dataset contains 5 subsets: forward walking, backward walking, side walking, diagonal walking, and mixed walking.
 The raw data is recorded on a human and therefore needs to be retargeted onto the robot model. For example, the mirrored version of the forward walking subset is retargeted using:
 ```bash
-python retargeting.py --KFWBGR --filename ../datasets/mocap/D2/1_forward_normal_step/data.log
+python retargeting.py --KFWBGR --filename ../datasets/D2/1_forward_normal_step/data.log
 ```
 
 ### Extracting features from the data
@@ -66,7 +69,7 @@ python features_extraction.py --dataset D2 --portion 1
 ### Training the model
 With the extracted features we can train the model. The weight given to the PI loss component can be specified as an argument.
 ```bash
-python training_pytorch.py --pi_weight 1.0
+python training.py --pi_weight 1.0
 ```
 
 ### Running the trajectory generator with a trained model
