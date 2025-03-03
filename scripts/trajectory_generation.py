@@ -37,12 +37,12 @@ viz = MeshcatVisualizer()
 viz.load_model(ml.model())
 
 # Create the trajectory generator
-mann_trajectory_generator = blf.ml.velMANNAutoregressive()
+mann_trajectory_generator = blf.ml.VelMANNAutoregressive()
 assert mann_trajectory_generator.set_robot_model(ml.model())
 assert mann_trajectory_generator.initialize(params_network)
 
 # Create the input builder
-input_builder = blf.ml.velMANNAutoregressiveInputBuilder()
+input_builder = blf.ml.VelMANNAutoregressiveInputBuilder()
 assert input_builder.initialize(params_joypad)
 
 # Initial joint positions configuration. The serialization is specified in the config file
@@ -60,7 +60,7 @@ base_pose = manif.SE3([0, 0, initial_base_height], quat)
 # - `left_stick_y`: 0.0
 # - `right_stick_x`: 1.0
 # - `right_stick_y`: 0.0
-input_builder_input = blf.ml.velMANNDirectionalInput()
+input_builder_input = blf.ml.VelMANNDirectionalInput()
 input_builder_input.motion_direction = np.array([1, 0])
 input_builder_input.base_direction = np.array([1, 0])
 

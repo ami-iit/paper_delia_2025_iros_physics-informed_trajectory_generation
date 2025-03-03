@@ -13,7 +13,7 @@ import idyntree.swig as idyn
 import mujoco
 import mujoco.viewer
 import jaxsim.api as js
-from jaxsim.mujoco import UrdfToMjcf
+from jaxsim.mujoco import ModelToMjcf
 
 import matplotlib as mpl
 mpl.rcParams['toolbar'] = 'None'
@@ -299,7 +299,7 @@ def visualize_retargeted_motion(timestamps: List,
      "xyaxes":"0 0 4 0 1 0",
      "fovy":"60",
     }
-    mjcf_string, assets = UrdfToMjcf.convert(urdf=js_model.built_from, cameras=camera)
+    mjcf_string, assets = ModelToMjcf.convert(model=js_model.built_from, cameras=camera)
 
     # Create the mujoco objects
     env = mujoco.MjModel.from_xml_string(mjcf_string, assets)
@@ -382,7 +382,7 @@ def visualize_global_features(global_window_features,
      "xyaxes":"0 0 4 0 1 0",
      "fovy":"60",
     }
-    mjcf_string, assets = UrdfToMjcf.convert(urdf=js_model.built_from, cameras=camera)
+    mjcf_string, assets = ModelToMjcf.convert(model=js_model.built_from, cameras=camera)
 
     # Create the mujoco objects
     env = mujoco.MjModel.from_xml_string(mjcf_string, assets)
@@ -543,7 +543,7 @@ def visualize_local_features(local_window_features,
      "xyaxes":"0 0 4 0 1 0",
      "fovy":"60",
     }
-    mjcf_string, assets = UrdfToMjcf.convert(urdf=js_model.built_from, cameras=camera)
+    mjcf_string, assets = ModelToMjcf.convert(model=js_model.built_from, cameras=camera)
 
     # Create the mujoco objects
     env = mujoco.MjModel.from_xml_string(mjcf_string, assets)

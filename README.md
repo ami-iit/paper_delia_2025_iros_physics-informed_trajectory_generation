@@ -26,10 +26,9 @@ We recommend using conda/mamba, available [here](https://github.com/conda-forge/
 
 First, create and activate a conda environment with the necessary dependencies.
 ```bash
-mamba create -n pi_trajectory_gen -c conda-forge bipedal-locomotion-framework jaxsim pytorch tensorboard adam-robotics jax2torch urdf-parser-py h5py
+mamba create -n pi_trajectory_gen -c conda-forge bipedal-locomotion-framework jaxsim pytorch tensorboard adam-robotics jax2torch urdf-parser-py h5py ergocub-models meshcat-python
 mamba activate pi_trajectory_gen
 ```
-<!-- idyntree manifpy mujoco -->
 
 Next, within the conda environment, clone and install this repo:
 ```bash
@@ -50,7 +49,7 @@ Now you're ready to run the code.
 ## Running the code
 To replicate our results, several scripts are available in the `scripts` folder.
 ```bash
-cd scripts/
+cd ../scripts/
 ```
 
 ### Retargeting the data

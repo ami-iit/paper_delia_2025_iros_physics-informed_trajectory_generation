@@ -14,10 +14,14 @@ from pi_trajectory_generation.mann_pytorch.MotionPredictionNetwork import Motion
 
 # for vmapping with jax
 from jax2torch import jax2torch
+import jax
 import jax.numpy as jnp
 from jax import jit, vmap
 import functools
 from adam.pytorch import KinDynComputationsBatch
+
+# Ensure no loss of precision in matrix multiplication
+jax.config.update("jax_default_matmul_precision", "high")
 
 @jit
 @functools.partial(vmap, in_axes=(0, 0, 0, 0))
